@@ -13,8 +13,8 @@ Don't ask me why.
 '''
 
 
-def main(start_id=0):
-    with open("channels.txt", 'a') as f:
+def main(output_file, start_id=0):
+    with open(output_file, 'a') as f:
         while True:
             print(start_id)
             numbers = ",".join([str(i) for i in range(start_id, start_id + 100)])
@@ -39,6 +39,7 @@ def main(start_id=0):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("--start_id", type=int, default=0, help="Channel set ID to start at")
+    parser.add_argument('--output_file', type=str, default='channels.txt', help='File to write outputs to')
 
     args = parser.parse_args()
-    main(args.start_id)
+    main(args.output_file, args.start_id)
